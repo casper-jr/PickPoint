@@ -10,8 +10,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.pickpoint.pickpoint.R
 import com.pickpoint.pickpoint.ui.common.component.NumberSettingComponent
 import com.pickpoint.pickpoint.ui.common.component.ResetConfirmButton
 import com.pickpoint.pickpoint.ui.common.component.ResultsComponent
@@ -25,14 +27,17 @@ fun TeamMakerSettingContent(
     pointsToPickPlus: () -> Unit,
     pointsToPickMinus: () -> Unit,
     reset: () -> Unit,
-    confirm: () -> Unit
+    apply: () -> Unit
 ) {
     Box(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize()
     ) {
-        Column {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
             NumberSettingComponent(
                 modifier = Modifier
                     .padding(top = 30.dp)
@@ -44,15 +49,15 @@ fun TeamMakerSettingContent(
             )
 
         }
-
         ResetConfirmButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 14.dp)
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 35.dp)
                 .align(Alignment.BottomCenter),
             reset = { reset() },
-            confirm = { confirm() }
+            apply = { apply() }
+
         )
     }
 }
@@ -62,11 +67,11 @@ fun TeamMakerSettingContent(
 private fun TMSettingContentPreview() {
     PickPointTheme(theme = AppTheme.LIGHT_PROTOTYPE, dynamicColor = false) {
         TeamMakerSettingContent(
-            pointsToPick = 1,
+            pointsToPick = 2,
             pointsToPickPlus = {},
             pointsToPickMinus = {},
             reset = {},
-            confirm = {}
+            apply = {}
         )
     }
 }
