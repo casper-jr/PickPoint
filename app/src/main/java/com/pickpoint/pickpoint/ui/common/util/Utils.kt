@@ -1,5 +1,6 @@
 package com.pickpoint.pickpoint.ui.common.util
 
+import android.util.Log
 import androidx.compose.ui.graphics.Color
 import com.pickpoint.pickpoint.ui.theme.PointColors
 
@@ -23,7 +24,8 @@ fun List<String>.getResultString(): String{
     if (this.isEmpty()) return ""
 
     var result = "Results\n\n"
-    for (i in 0 .. this.size) {
+    for (i in indices) {
+        Log.d("result", "${i+1}. "+this[i])
         result += "${i+1}. "+this[i]+"\n"
     }
     return result
