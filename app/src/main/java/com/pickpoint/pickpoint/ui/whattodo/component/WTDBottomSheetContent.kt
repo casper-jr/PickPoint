@@ -3,7 +3,6 @@ package com.pickpoint.pickpoint.ui.whattodo.component
 import android.content.ClipData
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,17 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.platform.LocalClipboard
-import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.pickpoint.pickpoint.R
 import com.pickpoint.pickpoint.ui.common.component.RetryButton
 import com.pickpoint.pickpoint.ui.common.util.getResultString
@@ -59,13 +52,13 @@ fun WTDBottomSheetContent(
                 .padding(horizontal = 30.dp)
         ) {
             Box(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "Results",
                     style = MaterialTheme.typography.headlineLarge,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = modifier.align(Alignment.Center)
                 )
 
                 Box(
@@ -78,14 +71,13 @@ fun WTDBottomSheetContent(
                             coroutineScope.launch {
                                 clipboard.setClipEntry(clipData.toClipEntry())
                             }
-                        }
+                        },
+                    contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_content_copy),
                         contentDescription = "Copy",
                         tint = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .align(Alignment.Center)
                     )
                 }
             }
